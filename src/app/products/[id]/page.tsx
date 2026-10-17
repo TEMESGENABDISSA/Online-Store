@@ -1,15 +1,42 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { getProductById } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useCart } from "@/lib/cart-context";
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = getProductById(params.id);
+  const { addToCart } = useCart();
 
   if (!product) {
-    notFound();
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
+        <Navigation />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-amber-900 mb-4">
+              Product Not Found
+            </h1>
+            <p className="text-xl text-amber-800 mb-8">
+              The product you are looking for does not exist.
+            </p>
+            <Link
+              href="/products"
+              className="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
+            >
+              Browse All Products
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
   }
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
@@ -62,6 +89,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               </div>
 
               <button
+                onClick={handleAddToCart}
                 disabled={!product.available}
                 className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-colors ${
                   product.available
