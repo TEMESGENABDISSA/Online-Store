@@ -155,12 +155,16 @@ export default function CheckoutPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.name ? "border-red-500" : "border-amber-300"
-                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                   />
                   {errors.name && (
-                    <p className="text-red-600 text-sm mt-1">{errors.name}</p>
+                    <p id="name-error" className="text-red-600 text-sm mt-1" role="alert">{errors.name}</p>
                   )}
                 </div>
 
@@ -174,12 +178,16 @@ export default function CheckoutPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.email ? "border-red-500" : "border-amber-300"
-                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                   />
                   {errors.email && (
-                    <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                    <p id="email-error" className="text-red-600 text-sm mt-1" role="alert">{errors.email}</p>
                   )}
                 </div>
 
@@ -193,12 +201,16 @@ export default function CheckoutPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.phone}
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.phone ? "border-red-500" : "border-amber-300"
-                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                   />
                   {errors.phone && (
-                    <p className="text-red-600 text-sm mt-1">{errors.phone}</p>
+                    <p id="phone-error" className="text-red-600 text-sm mt-1" role="alert">{errors.phone}</p>
                   )}
                 </div>
 
@@ -212,12 +224,16 @@ export default function CheckoutPage() {
                     value={formData.address}
                     onChange={handleChange}
                     rows={3}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!errors.address}
+                    aria-describedby={errors.address ? "address-error" : undefined}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.address ? "border-red-500" : "border-amber-300"
-                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                    } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                   />
                   {errors.address && (
-                    <p className="text-red-600 text-sm mt-1">{errors.address}</p>
+                    <p id="address-error" className="text-red-600 text-sm mt-1" role="alert">{errors.address}</p>
                   )}
                 </div>
 
@@ -232,12 +248,16 @@ export default function CheckoutPage() {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.city}
+                      aria-describedby={errors.city ? "city-error" : undefined}
                       className={`w-full px-4 py-2 rounded-lg border ${
                         errors.city ? "border-red-500" : "border-amber-300"
-                      } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                      } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                     />
                     {errors.city && (
-                      <p className="text-red-600 text-sm mt-1">{errors.city}</p>
+                      <p id="city-error" className="text-red-600 text-sm mt-1" role="alert">{errors.city}</p>
                     )}
                   </div>
 
@@ -251,12 +271,16 @@ export default function CheckoutPage() {
                       name="postalCode"
                       value={formData.postalCode}
                       onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.postalCode}
+                      aria-describedby={errors.postalCode ? "postalCode-error" : undefined}
                       className={`w-full px-4 py-2 rounded-lg border ${
                         errors.postalCode ? "border-red-500" : "border-amber-300"
-                      } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                      } focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none`}
                     />
                     {errors.postalCode && (
-                      <p className="text-red-600 text-sm mt-1">{errors.postalCode}</p>
+                      <p id="postalCode-error" className="text-red-600 text-sm mt-1" role="alert">{errors.postalCode}</p>
                     )}
                   </div>
                 </div>
