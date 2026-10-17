@@ -1,14 +1,11 @@
-"use client";
-
 import Navigation from "@/components/Navigation";
 import { getProductById } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/lib/cart-context";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = getProductById(params.id);
-  const { addToCart } = useCart();
 
   if (!product) {
     return (
@@ -33,10 +30,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       </div>
     );
   }
-
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
@@ -88,17 +81,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 )}
               </div>
 
-              <button
-                onClick={handleAddToCart}
-                disabled={!product.available}
-                className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-colors ${
-                  product.available
-                    ? "bg-amber-600 hover:bg-amber-700"
-                    : "bg-gray-400 cursor-not-allowed"
-                }`}
-              >
-                {product.available ? "Add to Cart" : "Out of Stock"}
-              </button>
+              <AddToCartButton product={product} />
             </div>
           </div>
         </div>
